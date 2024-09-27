@@ -4,8 +4,8 @@ import 'chart.js/auto';
 import { useNavigate } from 'react-router-dom';
 
 const ChartComponent = ({ data }) => {
-  const chartRef = useRef(); // Create a ref for the chart
-  const navigate = useNavigate(); // Initialize useNavigate for redirection
+  const chartRef = useRef();
+  const navigate = useNavigate(); // Initializing useNavigate for redirection
 
   const handleClick = (event) => {
     const activePoints = chartRef.current.getElementsAtEventForMode(event, 'nearest', { intersect: true }, false);
@@ -13,6 +13,7 @@ const ChartComponent = ({ data }) => {
       const { index } = activePoints[0];
       const clickedData = data[index];
       console.log('Clicked data:', clickedData);
+
       // Navigate to the detailed view, passing clicked data in the state
       navigate('/details', { state: { clickedData } });
     }
@@ -62,7 +63,7 @@ const ChartComponent = ({ data }) => {
         ref={chartRef}
         data={chartData}
         options={options}
-        onClick={handleClick} // Attach click handler
+        onClick={handleClick}
       />
     </div>
   );
