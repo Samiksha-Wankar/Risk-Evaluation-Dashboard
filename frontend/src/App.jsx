@@ -19,7 +19,7 @@ function App() {
       setUser(user);
     });
 
-    fetch('http://localhost:5000/api/risks')
+   fetch(`${import.meta.env.VITE_BACKEND_URL}/api/risks`)
       .then(response => response.json())
       .then(data => {
         console.log('Fetched Data:', data)
